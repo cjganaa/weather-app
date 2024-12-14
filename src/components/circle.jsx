@@ -18,6 +18,8 @@ export function CenterCircle(){
             <div className="rounded-full w-[940px] h-[940px] border border-gray-600 absolute opacity-35"></div>
             <div className="rounded-full w-[1340px] h-[1340px] border border-gray-600 absolute opacity-35"></div>
             <div className="rounded-full w-[1740px] h-[1740px] border border-gray-600 absolute opacity-35"></div>
+            <div className="absolute top-[430px] left-[520px] rounded-full w-[128px] h-[128px] bg-[#6E72C9]"></div>
+            <div className="absolute bottom-[430px] right-[520px] rounded-full w-[128px] h-[128px] bg-[#FF8E27]"></div>
           </div>
     );
 }
