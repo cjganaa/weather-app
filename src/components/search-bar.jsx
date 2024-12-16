@@ -11,7 +11,6 @@ const CITIES = [
 ];
 export function Search({search,setSearch,setCityValueFromSearch,setCityName}){
     const [countries, setCountries] = useState();
-    let suggestions=[];
     let downSuggestion;
     if(search != ''){
         downSuggestion = <ul className="w-[500px] h-fit bg-white text-black rounded-[24px] p-5 max-h-[600px] overflow-y-auto">

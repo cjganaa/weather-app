@@ -125,7 +125,7 @@ export function Card({theme,cityName,dayData}){
                     </div>
                     
                     <div className="relative self-center z-10">
-                        <Image className="self-center absolute left-2 top-2 blur-lg opacity-50"  src={"/weather-icon/"+dayImg+".png"} width={256} height={256} alt="sun"/>
+                        <Image className="self-center absolute left-4 top-4 blur-lg opacity-50"  src={"/weather-icon/"+dayImg+".png"} width={256} height={256} alt="sun"/>
                         <Image className="self-center relative"  src={"/weather-icon/"+dayImg+".png" } width={256} height={256} alt="sun"/>
                     </div>
                     <div className="font-extrabold text-9xl text-transparent bg-gradient-to-b from-[#111827] to-[#6B7280] bg-clip-text z-10">{Math.floor(dayData.dayTempC)}°</div>

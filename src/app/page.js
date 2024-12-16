@@ -37,6 +37,7 @@ export default function Home() {
   },[cityName]);
   return (
     <div className="w-full h-screen flex bg-[#F3F4F6] overflow-hidden justify-between">
+      <title>Weather</title>
       <Search search={search} setSearch={setSearch} setCityValueFromSearch={setCityValueFromSearch} setCityName={setCityName}/>
       <div className="w-1/2 h-screen bg-[#F3F4F6] p-4 flex justify-center items-center relative">
         <Card theme="day" cityName={cityName} dayData={dayData}/>
