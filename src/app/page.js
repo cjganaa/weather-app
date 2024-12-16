@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=1&aqi=no&alerts=no`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=1&aqi=no&alerts=no`)
       .then((res) => {
         return res.json();
       })
