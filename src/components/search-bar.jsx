@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 
 const CITIES = [
@@ -10,6 +10,31 @@ const CITIES = [
     "London"
 ];
 export function Search({search,setSearch,setCityValueFromSearch,setCityName}){
+    const [countries, setCountries] = useState();
+    let suggestions=[];
+    let downSuggestion;
+    if(search != ''){
+        downSuggestion = <ul className="w-[500px] h-fit bg-white text-black rounded-[24px] p-5 max-h-[600px] overflow-y-auto">
+                {countries?.map(country => country.cities.filter(name => name.toLowerCase().includes(search.toLowerCase()) && search !='').map((suggestion, index) => (
+                <li key={index} className="flex items-center font-extrabold text-[24px] gap-3" onClick={() => {setSearch(suggestion);setCityName(suggestion);}}>
+                    <IoLocationOutline className="text-gray-400"/>
+                    {suggestion}
+                    {", "+country.country}
+                </li>
+                )))}
+            </ul>;
+    }else{
+        downSuggestion = null;
+    }
+    useEffect(() => {
+        fetch("https://countriesnow.space/api/v0.1/countries")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                setCountries(data.data);
+            });
+    },[])
     return(
         <div className="flex flex-col absolute left-[40px] top-[40px] z-20 gap-3">
             <div className="flex px-4 py-3 rounded-[50px] border-none border-gray-600 overflow-hidden w-[500px] h-fit font-[sans-serif] p-0 drop-shadow-md bg-white">
@@ -27,14 +52,7 @@ export function Search({search,setSearch,setCityValueFromSearch,setCityName}){
                     onKeyDown={setCityValueFromSearch}
                 />
             </div>
-            <ul className="w-[500px] h-fit bg-white text-black rounded-[24px] p-5">
-                {CITIES.filter(name => name.includes(search)).map((suggestion, index) => (
-                <li key={index} className="flex items-center font-extrabold text-[28px] gap-3" onClick={() => {setSearch(suggestion);setCityName(suggestion);}}>
-                    <IoLocationOutline />
-                    {suggestion}
-                </li>
-                ))}
-            </ul>
+            {downSuggestion}
         </div>
     );
 }
